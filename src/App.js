@@ -4,6 +4,7 @@ import FontAwesomeIcon from 'react-fontawesome'
 
 import AddTodo from './AddTodo'
 import TodoListContainer from './TodoListContainer'
+import Ping from './Ping'
 
 const db = [
   {
@@ -31,6 +32,11 @@ export default class App extends Component {
           <Row>
             <Col>
               <TodoListContainer />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Ping />
             </Col>
           </Row>
         </Container>
