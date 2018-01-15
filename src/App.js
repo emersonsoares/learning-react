@@ -4,15 +4,6 @@ import FontAwesomeIcon from 'react-fontawesome'
 
 import AddTodo from './AddTodo'
 import TodoListContainer from './TodoListContainer'
-import Ping from './Ping'
-
-const db = [
-  {
-    title: String,
-    done: Boolean,
-    createdAt: Date
-  }
-]
 
 export default class App extends Component {
   state = {}
@@ -32,11 +23,6 @@ export default class App extends Component {
           <Row>
             <Col>
               <TodoListContainer />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Ping />
             </Col>
           </Row>
         </Container>

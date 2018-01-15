@@ -1,19 +1,33 @@
+import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import TodoList from './TodoList'
 
-export default class extends Component {
-  //Aways remember to set inital state!
-  state = { todos: [] }
+import { toggleTodo } from './actions'
 
-  componentDidMount() {
-    this.setState({
-      todos: [{ title: 'Do something' }, { title: 'Do something else'}, { title: 'Go home!' } ]
-    })
-  }
-
-  render() {
-    return (
-      <TodoList todos={this.state.todos}/>
-    )
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos
+    case 'SHOW_COMPLETED':
+      return todos.filter(t => t.completed)
+    case 'SHOW_ACTIVE':
+      return todos.filter(t => !t.completed)
+    default:
+      throw new Error('Unknown filter: ' + filter)
   }
 }
+
+const mapStateToProps = (state) => ({
+  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+})
+
+const mapDispatchToProps = {
+  handleToggle: toggleTodo
+}
+
+const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+
+export default VisibleTodoList

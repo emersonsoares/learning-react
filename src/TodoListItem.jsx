@@ -10,9 +10,11 @@ class TodoListItem extends Component {
     return (
       <ListGroupItem>
         <div className="d-flex">
-          <span className="mr-auto">{this.props.title}</span>
+          <span className="mr-auto" style={{
+            textDecoration: this.props.completed ? 'line-through' : 'none'
+          }}>{this.props.text}</span>
           <div className="justify-content-end">
-            <Button color="success" size="sm" className="mr-1">
+            <Button color="success" size="sm" className="mr-1" onClick={this.props.handleToggle}>
               <FontAwesomeIcon name="check" />
             </Button>
             <Button color="danger" size="sm">
@@ -26,7 +28,9 @@ class TodoListItem extends Component {
 }
 
 TodoListItem.propTypes = {
-  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  handleToggle: PropTypes.func.isRequired
 }
 
 export default TodoListItem
