@@ -6,10 +6,12 @@ import PropTypes from 'prop-types'
 import TodoListItem from './TodoListItem'
 
 //Functional Components or Pure Components
-const TodoList = ({ todos, handleToggle }) => (
+const TodoList = ({ todos, handleToggle, handleRemove }) => (
   <ListGroup>
     {todos.map((todo) => (
-      <TodoListItem key={todo.id} {...todo} handleToggle={() => handleToggle(todo.id)} />
+      <TodoListItem key={todo.id} {...todo} 
+        handleToggle={() => handleToggle(todo.id)}
+        handleRemove={() => handleRemove(todo.id) } />
     ))}
   </ListGroup>
 )
@@ -20,7 +22,8 @@ TodoList.propTypes = {
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  handleToggle: PropTypes.func.isRequired
+  handleToggle: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired
 }
 
 export default TodoList

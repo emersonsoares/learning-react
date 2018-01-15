@@ -17,7 +17,7 @@ class TodoListItem extends Component {
             <Button color="success" size="sm" className="mr-1" onClick={this.props.handleToggle}>
               <FontAwesomeIcon name="check" />
             </Button>
-            <Button color="danger" size="sm">
+            <Button color="danger" size="sm" onClick={this.props.handleRemove}>
               <FontAwesomeIcon name="trash" />
             </Button>
           </div>
@@ -30,7 +30,8 @@ class TodoListItem extends Component {
 TodoListItem.propTypes = {
   text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
-  handleToggle: PropTypes.func.isRequired
+  handleToggle: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired
 }
 
 export default TodoListItem

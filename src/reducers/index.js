@@ -20,6 +20,9 @@ const todos = (state = [], action) => {
           return todo
       })
       break
+    case 'REMOVE_TODO':
+      return state.filter(todo => todo.id !== action.id)
+      break
     default:
       return state
       break
